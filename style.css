@@ -1,0 +1,41 @@
+
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+
+        body
+        {
+            font-family: 'roboto',sans-serif ;
+            background-image: radial-gradient(circle at 7.92% 38.72%, #a1ffc0 0, #8dffc2 12.5%, #74fcc5 25%, #55f8c9 37.5%, #1ef3cd 50%, #00eed2 62.5%, #00e9d8 75%, #00e5df 87.5%, #00e0e7 100%);
+        }
+        div
+        {
+            margin: 2em auto;
+        }
+        .container
+        {
+            width:40%;
+            margin:1.5% auto;
+            padding: 50px;
+        }
+        .container h1
+        {
+            margin-bottom: 50px;
+        }
+        button
+        {
+            width:50%;
+            margin:1em auto;
+        }
+        @media (max-width:500px)
+        {
+            .container
+            {
+                width:auto;
+                margin:1em 1em;
+                padding: 50px;
+            }
+            .container h1
+            {
+                margin-bottom: 20px;
+            }
+            
+        }
