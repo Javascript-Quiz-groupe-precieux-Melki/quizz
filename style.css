@@ -14,7 +14,7 @@
             width:40%;
             margin:3% auto;
             padding: 50px;
-            animation-duration: 0.8s;
+            animation-duration: 1s;
             animation-name: slidein; 
         }
 
@@ -40,7 +40,7 @@
         }
         button
         {
-            width:50%;
+            width:45%;
             margin:1em auto;
         }
         @media (max-width:500px)
@@ -64,12 +64,13 @@
         }
         .innertimer
         {
-            height: 0.5em;
+            height: 0.7em;
+            width: 100%;
             border-radius: 10px;
             float:left;
-            animation: timer 3s;
-            width: 100%;
+            animation: timer 15s;
             background: #0086e5;
+            /* animation-play-state: unset; */
         }
         .form-check
         {
@@ -89,7 +90,13 @@
         {
             display: none;
         }
-        @keyframes timer {
+        .btns
+        {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        /* @keyframes timer {
         
         0%
         {
@@ -113,7 +120,7 @@
             width: 0%;
             background: #e04c2a;
         }
-        }
+        } */
         @keyframe reset
         {
             0%
