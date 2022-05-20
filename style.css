@@ -96,7 +96,7 @@
             flex-direction: row;
             justify-content: space-between;
         }
-        /* @keyframes timer {
+        @keyframes timer {
         
         0%
         {
@@ -120,7 +120,7 @@
             width: 0%;
             background: #e04c2a;
         }
-        } */
+        }
         @keyframe reset
         {
             0%
