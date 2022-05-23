@@ -28,15 +28,17 @@
             <form>
                 <div class="form-group text-left">
                 <label for="">Nom</label>
-                <input type="text" name="" id="" class="form-control" placeholder="Nom d'utilisateur">
+                <input type="text" name="username" id="" class="form-control username" placeholder="Nom d'utilisateur">
+                <p class="error"></p>
                 </div>
 
                 <div class="form-group text-left">
                     <label for="">Email</label>
-                    <input type="mail" name="" id="" class="form-control" placeholder="Adresse e-mail">
+                    <input type="email" name="usermail" id="" class="form-control usermail" placeholder="Adresse e-mail">
+                    <p class="error"></p>
                 </div>
                 
-                <button class="btn btn-success btn-start">Commencer</button>
+                <button type="submit" class="btn btn-success btn-start">Commencer</button>
 
             </form>
         </div>
@@ -49,10 +51,14 @@
             <p class="led text-dark question" >
             </p>
             <div class="timer">
-               
+               <div class="info">
+                   <span id="question">Question 1/15</span>
+                   <span id="time"></span>
+               </div>
             </div>
            
             <form>
+                <fieldset>
 
                 <div class="form-check" onclick="first.click()">
                     <input type="radio" name="q" id="first">
@@ -74,10 +80,16 @@
                     <label class="form-check-label">
                     </label>
                 </div>
-                
+                <div class="form-check hide">
+                    <input  type="radio" name="q" id="default" checked>
+                    <label class="form-check-label">
+                        default
+                    </label>
+                </div>
+                </fieldset>
                 <div class="btns">
-                    <button class="btn btn-warning text-light">Annuler</button>
-                    <button class="btn btn-success btn-next">Suivant</button>
+                    <button class="btn btn-quit text-light btn-quit">Quitter</button>
+                    <button class="btn btn-success btn-next" disabled>Suivant</button>
                 </div>
            
 
@@ -86,15 +98,15 @@
       
         <div class="container bg-light text-center result hide">
 
-            <h1>Melka</h1>
-            <p class="led text-dark">
+            <h1 class="username">Melka</h1>
+            <p class="led text-dark usermail">
                 Melkabotale1@gmail.com
             </p>
-            <p><span class="fa fa-regular fa-circle-check success"></span></p>
-            <p class="font-weight-bold">14/15</p>
+            <p><span class="fa" id="resimg"></span></p>
+            <p class="font-weight-bold final-score"></p>
            
             
-                <button class="btn btn-success">Commencer</button>
+                <button class="btn btn-primary restart">Acceuil</button>
         </div>
 
     </div>
