@@ -47,6 +47,9 @@
                 ]
         }    
     ]
+    const good = new Audio("assets/good.mp3")
+    const wrong = new Audio("assets/wrong.mp3")
+    
 
     //selecting Dom elements//
     const main = document.querySelector(".main")//bloc principal de tous les elements
@@ -199,7 +202,7 @@ function nextQ()
         element.parentElement.style.border="2px solid #ddd"
     });
     
-   
+   timer.style.display="block"
 }
 
 function validator()
@@ -211,17 +214,22 @@ function validator()
         {
             if(element.iscorrect)
             {
-                
+                good.play()
                 answer.parentElement.style.border="1px #028A3D solid"
                 score ++    
                 
                 
             }
             else
-                answer.parentElement.style.border="1px #EC880C solid"
+            {
+                wrong.play()
+                answer.parentElement.style.border="1px red solid"
+                
+            }
+                
         }
         allfields.setAttribute("disabled","disabled")
-        
+        timer.style.display="none"
         
     }); 
 }
