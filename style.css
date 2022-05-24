@@ -51,21 +51,6 @@
         }
 
 
-        @media (max-width:500px)
-        {
-            .container
-            {
-                width:auto;
-                margin:1em 1em;
-                padding: 50px;
-            }
-            .container h1
-            {
-                margin-bottom: 20px;
-            }
-            
-        }
-
         .timer{
             height: 3em;
             margin: 1em;
@@ -170,6 +155,43 @@
             width: 0%;
             background: #f85e3c;
         }
+        }
+
+        @media (max-width:500px)
+        {
+            .container
+            {
+                min-height: 100%;
+                width:auto;
+                margin:auto 0.5em;
+                padding: 85px 30px;
+                font-size: 15px;
+            }
+            .container h1
+            {
+                margin-bottom: 20px;
+            }
+            .btn
+            {
+               
+                width: 40%;
+              
+            }
+
+        @keyframes slidein {
+
+            from {
+
+              opacity:0;
+           
+            }
+
+            to {
+              opacity: 1;
+          
+            }
+          } 
+            
         }
         /* @keyframe reset
         {

@@ -4,49 +4,7 @@
     let time =60
     let score = 0
     let innerwidth = 100
-    let quiz= 
-    [
-        {
-            q: "What is the capital of DRC",
-            a: [
-                {text:"Kinshasa", iscorrect:true},
-                {text:"Mbadaka", iscorrect:false},
-                {text:"Lubumbashi", iscorrect:false},
-                {text:"Goma", iscorrect:false}
-                ]
-        },
-        {
-
-            q: "Qui a tué kabila",
-            a: [
-                {text:"Mobutu", iscorrect:true},
-                {text:"Fatal", iscorrect:false},
-                {text:"Tshisekedi", iscorrect:false},
-                {text:"Kengo", iscorrect:false}
-                ]
-        }
-        ,
-        {
-
-            q: "Qui est le meilleur Dev de la cohorte KDA 2022",
-            a: [
-                {text:"Henock", iscorrect:true},
-                {text:"Paul", iscorrect:false},
-                {text:"Marina", iscorrect:false},
-                {text:"Esther", iscorrect:false}
-                ]
-        },
-        {
-    
-            q: "Qui est le meilleur Dev de la cohorte KDA 2023",
-            a: [
-                {text:"Osée", iscorrect:true},
-                {text:"Pascal", iscorrect:false},
-                {text:"Samuel", iscorrect:false},
-                {text:"Blaise", iscorrect:false}
-                ]
-        }    
-    ]
+   
     const good = new Audio("assets/good.mp3")
     const wrong = new Audio("assets/wrong.mp3")
     
@@ -116,7 +74,7 @@ function init()
     questions.classList.add("hide")
     questions.classList.remove("hide")
 
-    question.textContent= quiz[0].q+" "+score
+    question.textContent= quiz[0].q
     q1.nextElementSibling.textContent=quiz[0].a[0].text
     q2.nextElementSibling.textContent=quiz[0].a[1].text
     q3.nextElementSibling.textContent=quiz[0].a[2].text
@@ -136,9 +94,14 @@ function init()
         
         infotime.textContent=time
         
+        if(time<=10)
+        {
+            infotime.style.color="red"
+        }
         if(time<=0)
         {
-            time=0
+            time=60
+            infotime.style.color="#222"
             nextQ()
         }
         
@@ -187,7 +150,7 @@ function nextQ()
     {
     showres()
     }
-    question.textContent= quiz[count].q+ " "+ score
+    question.textContent= quiz[count].q
     q1.nextElementSibling.textContent=quiz[count].a[0].text
     q2.nextElementSibling.textContent=quiz[count].a[1].text
     q3.nextElementSibling.textContent=quiz[count].a[2].text
@@ -207,7 +170,7 @@ function nextQ()
 
 function validator()
 {
-    btnNext.removeAttribute("disabled")
+  
     const answer = document.querySelector("input[type='radio']:checked")
     quiz[count].a.forEach(element => {
         if(element.text == answer.nextElementSibling.textContent )
@@ -229,7 +192,7 @@ function validator()
                 
         }
         allfields.setAttribute("disabled","disabled")
-        timer.style.display="none"
+        // timer.style.display="none"
         
     }); 
 }
@@ -271,7 +234,9 @@ btnStart.addEventListener("click",(e)=>
 btnNext.addEventListener("click",(e)=>
     {
         e.preventDefault()
-        nextQ()
+        validator()
+        setTimeout(nextQ,500);
+        // nextQ()
     }
 )
 
@@ -288,7 +253,7 @@ btnRestart.addEventListener("click",()=>
 reponses.forEach(element => {
     element.addEventListener("click",()=>
     {
-       validator()
+        btnNext.removeAttribute("disabled")
     })
     
 });
