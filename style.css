@@ -62,7 +62,7 @@
             border-radius: 10px;
             float:left;
             /* animation: timer 60s; */
-            background: #0086e5;
+            background: #028A3D;
             margin-top: 10px;
             /* animation-play-state: unset; */
         }
@@ -85,7 +85,23 @@
         {
             background: green;
         }
-     
+        .form-check-label
+        {
+            margin-left: 5px;
+            margin-bottom: 2px;
+            padding: 0;
+            vertical-align: top
+        }
+        input[type='radio']
+        {
+            display: none;
+        }
+        .fakeradio
+        {
+            display:inline-block;width: 22px;
+            height: 22px;border-radius:50%;
+            border:1px solid #666;
+        }
         .fa
         {
             font-size: 10em;
@@ -94,7 +110,7 @@
         }
         .success
         {
-            color:#0a8a43
+            color:#028A3D
         }
         .wrong
         {

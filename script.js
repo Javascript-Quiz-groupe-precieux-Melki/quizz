@@ -41,6 +41,8 @@
 
     const reponses = document.querySelectorAll("input[type='radio']")
 
+    const fakeradio = document.querySelectorAll(".fakeradio")
+
     const allfields = document.querySelector("fieldset")
 
     const resimg = document.querySelector("#resimg")
@@ -164,8 +166,7 @@ function nextQ()
     reponses.forEach(element => {
         element.parentElement.style.border="2px solid #ddd"
     });
-    
-   timer.style.display="block"
+    resetboreder()
 }
 
 function validator()
@@ -245,6 +246,7 @@ bntQuit.addEventListener("click",(e)=>
     e.preventDefault()
     showres()
 })
+
 btnRestart.addEventListener("click",()=>
 {
     location.reload();
@@ -254,8 +256,29 @@ reponses.forEach(element => {
     element.addEventListener("click",()=>
     {
         btnNext.removeAttribute("disabled")
+        resetboreder()
+        element.parentElement.style.border="2px solid ##028A3D"
+        element.previousElementSibling.style.background="#028A3D"
+        element.previousElementSibling.style.border="none"
+        
     })
     
 });
+
+function resetboreder()
+{
+    reponses.forEach(element => {
+
+        element.parentElement.style.border="2px #ddd solid;"
+   
+    })
+
+    fakeradio.forEach(element =>{
+
+        element.style.background="#fff"
+        element.style.border="1px solid #666"
+        console.log("asdasd",element)
+    })
+}
 
 
