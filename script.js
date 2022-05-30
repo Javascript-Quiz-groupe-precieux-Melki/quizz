@@ -1,22 +1,24 @@
 
-    //iitialisation des variables
-    let count = 0
+    //iitialising variables
+    let counter = 0
     let time =60
     let score = 0
     let innerwidth = 100
-   
+
+    //importing Audio files used by the app
     const good = new Audio("assets/good.mp3")
     const wrong = new Audio("assets/wrong.mp3")
     
 
-    //selecting Dom elements//
-    const main = document.querySelector(".main")//bloc principal de tous les elements
+    /*selecting Dom elements*/
 
-    //selections des entrees utilisateurs
+    const main = document.querySelector(".main")//Bloc principal de tous les elements
+    const start = document.querySelector(".start")//page d'acceuil
 
+    /*selections des entrees utilisateurs*/
     const infos = document.querySelectorAll(".start input")
   
-    const start = document.querySelector(".start")//page d'acceuil
+   
 
     const questions = document.querySelector(".questions")//page des questions
     const question = document.querySelector(".question")//Bloc des questions individuelle
@@ -104,7 +106,7 @@ function init()
         {
             time=60
             infotime.style.color="#222"
-            nextQ()
+            nextQuestion()
         }
         
     }
@@ -127,7 +129,7 @@ function init()
 
 }
 
-function showres()
+function showresult()
 {
     questions.classList.add("hide");
     result.classList.remove("hide")
@@ -139,41 +141,41 @@ function showres()
     else
     resimg.classList.add("fa-regular", "fa-circle-xmark", "wrong")
 }
-function nextQ()
+function nextQuestion()
 {
     
     def.checked=true
     result.childNodes[7].textContent=score+"/"+quiz.length
-    if(count<quiz.length-1)
+    if(counter<quiz.length-1)
     {
-        count++
+        counter++
     } 
     else
     {
-    showres()
+    showresult()
     }
-    question.textContent= quiz[count].q
-    q1.nextElementSibling.textContent=quiz[count].a[0].text
-    q2.nextElementSibling.textContent=quiz[count].a[1].text
-    q3.nextElementSibling.textContent=quiz[count].a[2].text
-    q4.nextElementSibling.textContent=quiz[count].a[3].text
+    question.textContent= quiz[counter].q
+    q1.nextElementSibling.textContent=quiz[counter].a[0].text
+    q2.nextElementSibling.textContent=quiz[counter].a[1].text
+    q3.nextElementSibling.textContent=quiz[counter].a[2].text
+    q4.nextElementSibling.textContent=quiz[counter].a[3].text
 
     time=60
     innerwidth=100
-    infoquestion.textContent="Question "+(count+1)+"/"+quiz.length
+    infoquestion.textContent="Question "+(counter+1)+"/"+quiz.length
     btnNext.setAttribute("disabled","disabled")
     allfields.removeAttribute("disabled")
     reponses.forEach(element => {
         element.parentElement.style.border="2px solid #ddd"
     });
-    resetboreder()
+    resetBorder()
 }
 
 function validator()
 {
   
     const answer = document.querySelector("input[type='radio']:checked")
-    quiz[count].a.forEach(element => {
+    quiz[counter].a.forEach(element => {
         if(element.text == answer.nextElementSibling.textContent )
         {
             if(element.iscorrect)
@@ -215,6 +217,7 @@ btnStart.addEventListener("click",(e)=>
         }
         if(infos[1].value=="")
         {
+            
             infos[1].style.border="2px solid red"
             infos[1].nextElementSibling.textContent="vous avez oublié de renseigner votre mail"
         }
@@ -236,15 +239,15 @@ btnNext.addEventListener("click",(e)=>
     {
         e.preventDefault()
         validator()
-        setTimeout(nextQ,500);
-        // nextQ()
+        setTimeout(nextQuestion,500);
+        // nextQuestion()
     }
 )
 
 bntQuit.addEventListener("click",(e)=>
 {
     e.preventDefault()
-    showres()
+    showresult()
 })
 
 btnRestart.addEventListener("click",()=>
@@ -256,7 +259,7 @@ reponses.forEach(element => {
     element.addEventListener("click",()=>
     {
         btnNext.removeAttribute("disabled")
-        resetboreder()
+        resetBorder()
         element.parentElement.style.border="2px solid ##028A3D"
         element.previousElementSibling.style.background="#028A3D"
         element.previousElementSibling.style.border="none"
@@ -265,7 +268,7 @@ reponses.forEach(element => {
     
 });
 
-function resetboreder()
+function resetBorder()
 {
     reponses.forEach(element => {
 
