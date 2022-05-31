@@ -1,287 +1,204 @@
+let counter = 0;
+let time = 60;
+let score = 0;
+let innerwidth = 100;
 
-    //iitialising variables
-    let counter = 0
-    let time =60
-    let score = 0
-    let innerwidth = 100
+const goodAnswerSound = new Audio("assets/good.mp3");
+const wrongAnswerSound = new Audio("assets/wrong.mp3");
 
-    //importing Audio files used by the app
-    const good = new Audio("assets/good.mp3")
-    const wrong = new Audio("assets/wrong.mp3")
-    
+const main = document.querySelector(".main");
+const homePage = document.querySelector(".start");
 
-    /*selecting Dom elements*/
+const userInfos = document.querySelectorAll(".start input");
 
-    const main = document.querySelector(".main")//Bloc principal de tous les elements
-    const start = document.querySelector(".start")//page d'acceuil
+const questionsPage = document.querySelector(".questions");
 
-    /*selections des entrees utilisateurs*/
-    const infos = document.querySelectorAll(".start input")
-  
-   
+const question = document.querySelector(".question");
 
-    const questions = document.querySelector(".questions")//page des questions
-    const question = document.querySelector(".question")//Bloc des questions individuelle
+const resultPage = document.querySelector(".result"); //Page de resultats
 
-    const result = document.querySelector(".result")//Page de resultats
-    
+const btnStart = document.querySelector(".btn-start");
+const btnNext = document.querySelector(".btn-next");
+const bntQuit = document.querySelector(".btn-quit");
+const btnRestart = document.querySelector(".restart");
 
-    const btnStart = document.querySelector(".btn-start")//boutton pour demarer la partie
-    const btnNext = document.querySelector(".btn-next")//boutton pour passer a la question suivante
-    const bntQuit = document.querySelector(".btn-quit")
-    const btnRestart = document.querySelector(".restart")
+const statement1 = document.querySelector("#statement1");
+const statement2 = document.querySelector("#statement2");
+const statement3 = document.querySelector("#statement3");
+const statement4 = document.querySelector("#statement4");
 
-    const form = document.querySelector("form")
+const defaultStatement = document.querySelector("#default-statement");
 
-     //selection des elemets des reponses
+const statements = document.querySelectorAll("input[type='radio']");
 
-    const q1 = document.querySelector("#first")
-    const q2 = document.querySelector("#second")
-    const q3 = document.querySelector("#third")
-    const q4 = document.querySelector("#fourth")
-    const def = document.querySelector("#default")
+const fakeRadio = document.querySelectorAll(".fakeradio");
 
-    const reponses = document.querySelectorAll("input[type='radio']")
+const resultIcon = document.querySelector("#result-icon");
 
-    const fakeradio = document.querySelectorAll(".fakeradio")
+const timerZone = document.querySelector(".timer-zone");
 
-    const allfields = document.querySelector("fieldset")
+const innertime = document.createElement("div");
+innertime.classList.add("innertimer");
+timerZone.appendChild(innertime);
 
-    const resimg = document.querySelector("#resimg")
+const questionNumber = document.querySelector("#question-number");
+const timeLeft = document.querySelector("#time");
 
+function init() {
+  homePage.style = "animation-duration: 1s;animation-name: slidein;";
+  homePage.classList.add("hide");
+  questionsPage.classList.add("hide");
+  questionsPage.classList.remove("hide");
 
+  question.textContent = quiz[0].q;
+  statement1.nextElementSibling.textContent = quiz[0].a[0].text;
+  statement2.nextElementSibling.textContent = quiz[0].a[1].text;
+  statement3.nextElementSibling.textContent = quiz[0].a[2].text;
+  statement4.nextElementSibling.textContent = quiz[0].a[3].text;
 
+  let username = userInfos[0].value;
+  let usermail = userInfos[1].value;
+  resultPage.childNodes[1].textContent = username;
+  resultPage.childNodes[3].textContent = usermail;
 
+  function timemanager() {
+    time > 0 ? time-- : false;
 
-    //creation de la progress bar
-    const timer = document.querySelector(".timer")
-    // timer.textContent=time
-    const innertime = document.createElement("div")
-    innertime.classList.add("innertimer")
-    timer.appendChild(innertime)
+    timeLeft.textContent = time;
 
-    let infoquestion = document.querySelector("#question")
-    let infotime = document.querySelector("#time")
-
-    
-
-   
-   
-
-
-
-function init()
-{
-
-    start.style="animation-duration: 1s;animation-name: slidein;"
-    start.classList.add("hide")
-    questions.classList.add("hide")
-    questions.classList.remove("hide")
-
-    question.textContent= quiz[0].q
-    q1.nextElementSibling.textContent=quiz[0].a[0].text
-    q2.nextElementSibling.textContent=quiz[0].a[1].text
-    q3.nextElementSibling.textContent=quiz[0].a[2].text
-    q4.nextElementSibling.textContent=quiz[0].a[3].text
-
-    
-    let username = infos[0].value
-    let usermail = infos[1].value
-    result.childNodes[1].textContent=username
-    result.childNodes[3].textContent=usermail
-
-
-
-    function timemanager()
-    {
-        time>0?time --:false
-        
-        infotime.textContent=time
-        
-        if(time<=10)
-        {
-            infotime.style.color="red"
-        }
-        if(time<=0)
-        {
-            time=60
-            infotime.style.color="#222"
-            nextQuestion()
-        }
-        
+    if (time <= 10) {
+      timeLeft.style.color = "red";
     }
-
-    function widthmanager()
-    {
-        innerwidth-=0.0084
-      
-        innertime.style.width=""+innerwidth+"%"
+    if (time <= 0) {
+      time = 60;
+      timeLeft.style.color = "#222";
+      nextQuestion();
     }
-    setInterval(widthmanager,5)
-    {
+  }
 
-    }
+  function widthmanager() {
+    innerwidth -= 0.0084;
 
-    setInterval(timemanager,1000)
-    {
+    innertime.style.width = "" + innerwidth + "%";
+  }
+  setInterval(widthmanager, 5);
+  {
+  }
 
-    }
-
+  setInterval(timemanager, 1000);
+  {
+  }
 }
 
-function showresult()
-{
-    questions.classList.add("hide");
-    result.classList.remove("hide")
-    result.childNodes[7].textContent=score+"/"+quiz.length
-    if((score*100/quiz.length)>=50)
-    {
-    resimg.classList.add("fa-regular", "fa-circle-check", "success")
-    }
-    else
-    resimg.classList.add("fa-regular", "fa-circle-xmark", "wrong")
+function showresult() {
+  questionsPage.classList.add("hide");
+  resultPage.classList.remove("hide");
+  resultPage.childNodes[7].textContent = score + "/" + quiz.length;
+  if ((score * 100) / quiz.length >= 50) {
+    resultIcon.classList.add("fa-regular", "fa-circle-check", "success");
+  } else resultIcon.classList.add("fa-regular", "fa-circle-xmark", "wrong");
 }
-function nextQuestion()
-{
-    
-    def.checked=true
-    result.childNodes[7].textContent=score+"/"+quiz.length
-    if(counter<quiz.length-1)
-    {
-        counter++
-    } 
-    else
-    {
-    showresult()
-    }
-    question.textContent= quiz[counter].q
-    q1.nextElementSibling.textContent=quiz[counter].a[0].text
-    q2.nextElementSibling.textContent=quiz[counter].a[1].text
-    q3.nextElementSibling.textContent=quiz[counter].a[2].text
-    q4.nextElementSibling.textContent=quiz[counter].a[3].text
+function nextQuestion() {
+  defaultStatement.checked = true;
+  resultPage.childNodes[7].textContent = score + "/" + quiz.length;
+  if (counter < quiz.length - 1) {
+    counter++;
+  } else {
+    showresult();
+  }
+  question.textContent = quiz[counter].q;
+  statement1.nextElementSibling.textContent = quiz[counter].a[0].text;
+  statement2.nextElementSibling.textContent = quiz[counter].a[1].text;
+  statement3.nextElementSibling.textContent = quiz[counter].a[2].text;
+  statement4.nextElementSibling.textContent = quiz[counter].a[3].text;
 
-    time=60
-    innerwidth=100
-    infoquestion.textContent="Question "+(counter+1)+"/"+quiz.length
-    btnNext.setAttribute("disabled","disabled")
-    allfields.removeAttribute("disabled")
-    reponses.forEach(element => {
-        element.parentElement.style.border="2px solid #ddd"
-    });
-    resetBorder()
+  time = 60;
+  innerwidth = 100;
+  questionNumber.textContent = "Question " + (counter + 1) + "/" + quiz.length;
+  btnNext.setAttribute("disabled", "disabled");
+
+  statements.forEach((element) => {
+    element.parentElement.style.border = "2px solid #ddd";
+  });
+  resetBorder();
 }
 
-function validator()
-{
-  
-    const answer = document.querySelector("input[type='radio']:checked")
-    quiz[counter].a.forEach(element => {
-        if(element.text == answer.nextElementSibling.textContent )
-        {
-            if(element.iscorrect)
-            {
-                good.play()
-                answer.parentElement.style.border="1px #028A3D solid"
-                score ++    
-                
-                
-            }
-            else
-            {
-                wrong.play()
-                answer.parentElement.style.border="1px red solid"
-                
-            }
-                
-        }
-        allfields.setAttribute("disabled","disabled")
-        // timer.style.display="none"
-        
-    }); 
+function validator() {
+  const answer = document.querySelector("input[type='radio']:checked");
+  quiz[counter].a.forEach((element) => {
+    if (element.text == answer.nextElementSibling.textContent) {
+      if (element.iscorrect) {
+        goodAnswerSound.play();
+        answer.parentElement.style.border = "1px #028A3D solid";
+        score++;
+      } else {
+        wrongAnswerSound.play();
+        answer.parentElement.style.border = "1px red solid";
+      }
+    }
+
+    // timer.style.display="none"
+  });
 }
 
-
-btnStart.addEventListener("click",(e)=>
-{
-    e.preventDefault()
-    infos.forEach(element => {
-        element.style.border="1px solid grey"
-        element.nextElementSibling.textContent=""
-    });
-    if (infos[0].value=="" || infos[1].value=="")
-    {
-        if(infos[0].value=="")
-        {
-            infos[0].style.border="2px solid red"
-            infos[0].nextElementSibling.textContent="vous avez oublié de remplir votre nom"
-        }
-        if(infos[1].value=="")
-        {
-            
-            infos[1].style.border="2px solid red"
-            infos[1].nextElementSibling.textContent="vous avez oublié de renseigner votre mail"
-        }
-       
+btnStart.addEventListener("click", (e) => {
+  e.preventDefault();
+  userInfos.forEach((element) => {
+    element.style.border = "1px solid grey";
+    element.nextElementSibling.textContent = "";
+  });
+  if (userInfos[0].value == "" || userInfos[1].value == "") {
+    if (userInfos[0].value == "") {
+      userInfos[0].style.border = "2px solid red";
+      userInfos[0].nextElementSibling.textContent =
+        "vous avez oublié de remplir votre nom";
     }
-    else if(infos[1].value.indexOf("@")=="-1")
-    {
-        infos[1].style.border="2px solid red"
-        infos[1].nextElementSibling.textContent="Veuillez entrer une adresse e-mail valide"
+    if (userInfos[1].value == "") {
+      userInfos[1].style.border = "2px solid red";
+      userInfos[1].nextElementSibling.textContent =
+        "vous avez oublié de renseigner votre mail";
     }
-    
-    else  init()
-   
-
-
-})
-    
-btnNext.addEventListener("click",(e)=>
-    {
-        e.preventDefault()
-        validator()
-        setTimeout(nextQuestion,500);
-        // nextQuestion()
-    }
-)
-
-bntQuit.addEventListener("click",(e)=>
-{
-    e.preventDefault()
-    showresult()
-})
-
-btnRestart.addEventListener("click",()=>
-{
-    location.reload();
-})
-
-reponses.forEach(element => {
-    element.addEventListener("click",()=>
-    {
-        btnNext.removeAttribute("disabled")
-        resetBorder()
-        element.parentElement.style.border="2px solid ##028A3D"
-        element.previousElementSibling.style.background="#028A3D"
-        element.previousElementSibling.style.border="none"
-        
-    })
-    
+  } else if (userInfos[1].value.indexOf("@") == "-1") {
+    userInfos[1].style.border = "2px solid red";
+    userInfos[1].nextElementSibling.textContent =
+      "Veuillez entrer une adresse e-mail valide";
+  } else init();
 });
 
-function resetBorder()
-{
-    reponses.forEach(element => {
+btnNext.addEventListener("click", (e) => {
+  e.preventDefault();
+  validator();
+  setTimeout(nextQuestion, 500);
+  // nextQuestion()
+});
 
-        element.parentElement.style.border="2px #ddd solid;"
-   
-    })
+bntQuit.addEventListener("click", (e) => {
+  e.preventDefault();
+  showresult();
+});
 
-    fakeradio.forEach(element =>{
+btnRestart.addEventListener("click", () => {
+  location.reload();
+});
 
-        element.style.background="#fff"
-        element.style.border="1px solid #666"
-        console.log("asdasd",element)
-    })
+statements.forEach((element) => {
+  element.addEventListener("click", () => {
+    btnNext.removeAttribute("disabled");
+    resetBorder();
+    element.parentElement.style.border = "2px solid ##028A3D";
+    element.previousElementSibling.style.background = "#028A3D";
+    element.previousElementSibling.style.border = "none";
+  });
+});
+
+function resetBorder() {
+  statements.forEach((element) => {
+    element.parentElement.style.border = "2px #ddd solid;";
+  });
+
+  fakeRadio.forEach((element) => {
+    element.style.background = "#fff";
+    element.style.border = "1px solid #666";
+    console.log("asdasd", element);
+  });
 }
-
-

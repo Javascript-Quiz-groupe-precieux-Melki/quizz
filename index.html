@@ -1,125 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css" >
-</head>
-<body>
-
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="main">
-    
-        
-        <!-- Home section -->
-        <div class="container bg-light text-center start">
+      <div class="start container bg-light text-center">
+        <h1>Javascript Quiz</h1>
+        <p class="led text-dark">
+          Évaluez vos connaissances en JavaScript en répondant aux questions que
+          nous avons spécialement sélectionnées pour vous. C'est fun et c'est
+          gratuit.
+        </p>
 
-            <h1 >Javascript Quiz</h1>
-            <p class="led text-dark">
-                Évaluez vos connaissances en JavaScript en
-                répondant aux questions que nous avons
-                spécialement sélectionnées pour vous.
-                C'est fun et c'est gratuit. 
-            </p>
-            
-           
-            <form>
-                <div class="form-group text-left">
-                <label for="">Nom</label>
-                <input type="text" name="username" id="" class="form-control username" placeholder="Nom d'utilisateur">
-                <p class="error"></p>
-                </div>
+        <form>
+          <div class="form-group text-left">
+            <label for="">Nom</label>
+            <input
+              type="text"
+              name="username"
+              id=""
+              class="form-control username"
+              placeholder="Nom d'utilisateur"
+            />
+            <p class="error"></p>
+          </div>
 
-                <div class="form-group text-left">
-                    <label for="">Email</label>
-                    <input type="email" name="usermail" id="" class="form-control usermail" placeholder="Adresse e-mail">
-                    <p class="error"></p>
-                </div>
-                
-                <button type="submit" class="btn btn-success btn-start">Commencer</button>
+          <div class="form-group text-left">
+            <label for="">Email</label>
+            <input
+              type="email"
+              name="usermail"
+              id=""
+              class="form-control usermail"
+              placeholder="Adresse e-mail"
+            />
+            <p class="error"></p>
+          </div>
 
-            </form>
+          <button type="submit" class="btn btn-success btn-start">
+            Commencer
+          </button>
+        </form>
+      </div>
+
+      <!-- TODO rename class timer and time -->
+
+      <div class="questions container bg-light text-center hide">
+        <p class="led text-dark question"></p>
+        <div class="timer-zone">
+          <div class="info">
+            <span id="question-number">Question 1/15</span>
+            <span id="time"></span>
+          </div>
         </div>
 
-        <!-- End of home section -->
-
-        <!-- Questions section -->
-        <div class="container bg-light text-center questions hide">
-
-            <p class="led text-dark question" >
-            </p>
-            <div class="timer">
-               <div class="info">
-                   <span id="question">Question 1/15</span>
-                   <span id="time"></span>
-               </div>
+        <form>
+          <fieldset>
+            <div class="statement" onclick="statement1.click()">
+              <span class="fakeradio"></span>
+              <input type="radio" name="statement-radio" id="statement1" />
+              <label class="statement-label"> </label>
             </div>
-           
-            <form>
-                <fieldset>
+            <div class="statement" onclick="statement2.click()">
+              <span class="fakeradio"></span>
+              <input type="radio" name="statement-radio" id="statement2" />
 
-                <div class="form-check" onclick="first.click()">
-                    <span class="fakeradio" ></span>
-                    <input type="radio" name="q" id="first">
-                    <label class="form-check-label">
-                    </label>
-                </div>
-                <div class="form-check" onclick="second.click()">
-                    <span class="fakeradio" ></span>
-                    <input type="radio" name="q" id="second">
-                    
-                    <label class="form-check-label">
-                    </label>
-                </div>
-                <div class="form-check" onclick="third.click()">
-                    <span class="fakeradio" ></span>
-                    <input type="radio" name="q" id="third">
-                    <label class="form-check-label">
-                    </label>
-                </div>
-                <div class="form-check" onclick="fourth.click()">
-                    <span class="fakeradio" ></span>
-                    <input type="radio" name="q" id="fourth">
-                    <label class="form-check-label">
-                    </label>
-                </div>
-                <div class="form-check hide">
-                    <input  type="radio" name="q" id="default" checked>
-                    <label class="form-check-label">
-                        default
-                    </label>
-                </div>
-                </fieldset>
-                <div class="btns">
-                    <button class="btn btn-quit text-light btn-quit">Quitter</button>
-                    <button class="btn btn-success btn-next" disabled>Suivant</button>
-                </div>
-           
+              <label class="statement-label"> </label>
+            </div>
+            <div class="statement" onclick="statement3.click()">
+              <span class="fakeradio"></span>
+              <input type="radio" name="statement-radio" id="statement3" />
+              <label class="statement-label"> </label>
+            </div>
+            <div class="statement" onclick="statement4.click()">
+              <span class="fakeradio"></span>
+              <input type="radio" name="statement-radio" id="statement4" />
+              <label class="statement-label"> </label>
+            </div>
+            <div class="statement hide">
+              <input
+                type="radio"
+                name="statement-radio"
+                id="default-statement"
+                checked
+              />
+              <label class="statement-label"> default </label>
+            </div>
+          </fieldset>
+          <div class="btns">
+            <button class="btn btn-quit text-light btn-quit">Quitter</button>
+            <button class="btn btn-success btn-next" disabled>Suivant</button>
+          </div>
+        </form>
+      </div>
 
-            </form>
-        </div>
-      
-        <div class="container bg-light text-center result hide">
+      <div class="result container bg-light text-center hide">
+        <h1 class="username">Melka</h1>
+        <p class="led text-dark usermail">Melkabotale1@gmail.com</p>
+        <p><span class="fa" id="result-icon"></span></p>
+        <p class="font-weight-bold final-score"></p>
 
-            <h1 class="username">Melka</h1>
-            <p class="led text-dark usermail">
-                Melkabotale1@gmail.com
-            </p>
-            <p><span class="fa" id="resimg"></span></p>
-            <p class="font-weight-bold final-score"></p>
-           
-            
-                <button class="btn btn-primary restart">Acceuil</button>
-        </div>
-
+        <button class="btn btn-primary restart">Accueil</button>
+      </div>
     </div>
-<script src="questions.js"></script>
-<script src="script.js"></script>
-<script src="https://kit.fontawesome.com/fade8f71ba.js" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+    <script
+      src="https://kit.fontawesome.com/fade8f71ba.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

@@ -1,216 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&display=swap");
+body {
+  font-family: "inter", sans-serif;
+  background-image: radial-gradient(
+    circle at 7.92% 38.72%,
+    #a1ffc0 0,
+    #8dffc2 12.5%,
+    #74fcc5 25%,
+    #55f8c9 37.5%,
+    #1ef3cd 50%,
+    #00eed2 62.5%,
+    #00e9d8 75%,
+    #00e5df 87.5%,
+    #00e0e7 100%
+  );
+}
+.main {
+  margin: 2em auto;
+}
+.container {
+  width: 40%;
+  background: #ffffff;
+  margin: 3% auto;
+  padding: 50px;
+  animation-duration: 1s;
+  animation-name: slidein;
+}
 
-       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&display=swap');
-        body
-        {
-            font-family: 'inter',sans-serif ;
-            background-image: radial-gradient(circle at 7.92% 38.72%, #a1ffc0 0, #8dffc2 12.5%, #74fcc5 25%, #55f8c9 37.5%, #1ef3cd 50%, #00eed2 62.5%, #00e9d8 75%, #00e5df 87.5%, #00e0e7 100%);
-        }
-        .main
-        {
-            margin: 2em auto;
-        }
-        .container
-        {
-            width:40%;
-            background: #ffffff;
-            margin:3% auto;
-            padding: 50px;
-            animation-duration: 1s;
-            animation-name: slidein;
-        }
+@keyframes slidein {
+  from {
+    margin-left: 0%;
+    opacity: 0;
+  }
 
-        @keyframes slidein {
+  to {
+    margin-left: 30%;
+    opacity: 1;
+  }
+}
 
-            from {
-            
-              margin-left:0%;
-              opacity:0;
-           
-            }
+.container h1 {
+  margin-bottom: 50px;
+}
+button {
+  width: 45%;
+  margin: 1em auto;
+}
+.error {
+  color: red;
+  font-size: 12px;
+}
 
-            to {
-              margin-left: 30%;
-              opacity: 1;
-          
-            }
-          } 
+.timer-zone {
+  height: 3em;
+  margin: 1em;
+}
+.innertimer {
+  height: 0.7em;
+  width: 100%;
+  border-radius: 10px;
+  float: left;
+  /* animation: timer 60s; */
+  background: #028a3d;
+  margin-top: 10px;
+  /* animation-play-state: unset; */
+}
+.info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.statement {
+  padding: 1em;
+  background: #fff;
+  border: 2px #ddd solid;
+  text-align: left;
+  margin: 1em auto;
+}
+.statement input:checked {
+  background: green;
+}
+.statement-label {
+  margin-left: 5px;
+  margin-bottom: 2px;
+  padding: 0;
+  vertical-align: top;
+}
+input[type="radio"] {
+  display: none;
+}
+.fakeradio {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid #666;
+}
+.fa {
+  font-size: 10em;
+  margin: 0.05em auto;
+}
+.success {
+  color: #028a3d;
+}
+.wrong {
+  color: #de430b;
+}
+a.btn {
+  color: #fff;
+}
+.hide {
+  display: none;
+}
+.btn {
+  border-radius: 0;
+  height: 50px;
+  box-shadow: 0px 5px 5px 0px #666;
+  font-weight: 500;
+}
+.btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.btn-quit {
+  background: #ec880c;
+}
+.btn-next {
+  background: #028a3d;
+}
 
-        .container h1
-        {
-            margin-bottom: 50px;
-        }
-        button
-        {
-            width:45%;
-            margin:1em auto;
-        }
-        .error
-        {
-            color:red;
-            font-size:12px
-        }
+@media (max-width: 500px) {
+  .container {
+    min-height: 100%;
+    width: auto;
+    margin: auto 0.5em;
+    padding: 85px 30px;
+    font-size: 15px;
+  }
+  .container h1 {
+    margin-bottom: 20px;
+  }
+  .btn {
+    width: 40%;
+  }
 
+  @keyframes slidein {
+    from {
+      opacity: 0;
+    }
 
-        .timer{
-            height: 3em;
-            margin: 1em;
-        }
-        .innertimer
-        {
-            height: 0.7em;
-            width: 100%;
-            border-radius: 10px;
-            float:left;
-            /* animation: timer 60s; */
-            background: #028A3D;
-            margin-top: 10px;
-            /* animation-play-state: unset; */
-        }
-        .info
-        {
-            display: flex;
-            justify-content: space-between;
-            font-size:14px;
-        }
-        .form-check
-        {
-            padding:1em;
-            background: #fff;
-            border:2px #ddd solid;
-            text-align:left;
-            margin:1em auto;
-            
-        }
-        .form-check input:checked
-        {
-            background: green;
-        }
-        .form-check-label
-        {
-            margin-left: 5px;
-            margin-bottom: 2px;
-            padding: 0;
-            vertical-align: top
-        }
-        input[type='radio']
-        {
-            display: none;
-        }
-        .fakeradio
-        {
-            display:inline-block;width: 22px;
-            height: 22px;
-            border-radius:50%;
-            border:1px solid #666;
-        }
-        .fa
-        {
-            font-size: 10em;
-            margin: 0.05em auto;
-            
-        }
-        .success
-        {
-            color:#028A3D
-        }
-        .wrong
-        {
-            color:#de430b
-        }
-        a.btn{
-            color:#fff;
-        }
-        .hide
-        {
-            display: none;
-        }
-        .btn
-        {
-            border-radius: 0;
-            height: 50px;
-            box-shadow: 0px 5px 5px 0px  #666;
-            font-weight: 500;
-        }
-        .btns
-        {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-        .btn-quit
-        {
-            background: #EC880C;
-        }
-        .btn-next
-        {
-            background: #028A3D;
-        }
-        @keyframes timer {
-        
-        0%
-        {
-            width: 100%;
-            background: #0086e5;
-        }
-        25%
-        {
-            width: 75%;
-            background: #45c5b0;
-        }
-        50%
-        {
-            width: 50%;
-            background: #62ed53;
-        }
-        75%
-        {
-            width: 25%;
-            background: #e6e143;
-        }
-        100%
-        {
-            width: 0%;
-            background: #f85e3c;
-        }
-        }
-
-        @media (max-width:500px)
-        {
-            .container
-            {
-                min-height: 100%;
-                width:auto;
-                margin:auto 0.5em;
-                padding: 85px 30px;
-                font-size: 15px;
-            }
-            .container h1
-            {
-                margin-bottom: 20px;
-            }
-            .btn
-            {
-               
-                width: 40%;
-              
-            }
-
-        @keyframes slidein {
-
-            from {
-
-              opacity:0;
-           
-            }
-
-            to {
-              opacity: 1;
-          
-            }
-          } 
-            
-        }
-        /* @keyframe reset
+    to {
+      opacity: 1;
+    }
+  }
+}
+/* @keyframe reset
         {
             0%
             {
@@ -222,6 +166,3 @@
                 width:100%
             }
         } */
-        
-
-
