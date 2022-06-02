@@ -27,12 +27,12 @@ let quiz = [
     ],
   },
   {
-    q: "Quelle syntaxe est correcte pour que la fonction init soit appelée au chargement de la page ?",
+    q: "JavaScript s'exécute sur?",
     a: [
-      { text: "window.onload = init", iscorrect: true },
-      { text: "window.onload = init()", iscorrect: false },
-      { text: "window.onload() = init;", iscorrect: false },
-      { text: "window.onload() = init();", iscorrect: false },
+      { text: "le client", iscorrect: true },
+      { text: "doit être compilé avant d'être exécuté", iscorrect: false },
+      { text: "s'exécute sur le serveur uniquement", iscorrect: false },
+      { text: "sur le DOM", iscorrect: false },
     ],
   },
   {
@@ -51,6 +51,51 @@ let quiz = [
       { text: "var i = 3; alert(i++)", iscorrect: false },
       { text: "alert(parseInt('3'));", iscorrect: false },
       { text: "alert(Math.floor(2.9))", iscorrect: true },
+    ],
+  },
+  {
+    q: "Si ch1='ABCED', que retourne ch1.charAt(3) ",
+    a: [
+      { text: "e", iscorrect: false },
+      { text: "une erreur", iscorrect: false },
+      { text: "C", iscorrect: false },
+      { text: "E", iscorrect: true },
+    ],
+  },
+  {
+    q: "Math.floor(-3.4) affiche ",
+    a: [
+      { text: "3.4", iscorrect: false },
+      { text: "-4", iscorrect: false },
+      { text: "-3", iscorrect: true },
+      { text: "une erreur de syntaxe", iscorrect: false },
+    ],
+  },
+  {
+    q: "Que retourne isNaN('ABC'); ? ",
+    a: [
+      { text: "ABC", iscorrect: false },
+      { text: "true", iscorrect: true },
+      { text: "false", iscorrect: false },
+      { text: "isNotAnumber", iscorrect: false },
+    ],
+  },
+  {
+    q: "Comment passer à l'itération suivante dans une boucle for() ? ",
+    a: [
+      { text: "return", iscorrect: false },
+      { text: "continue", iscorrect: true },
+      { text: "break", iscorrect: false },
+      { text: "next", iscorrect: false },
+    ],
+  },
+  {
+    q: "BONUS: c'est qui l'expert en javascript? ",
+    a: [
+      { text: "Michel", iscorrect: true },
+      { text: "François", iscorrect: true },
+      { text: "Joseph", iscorrect: true },
+      { text: "Personne", iscorrect: false },
     ],
   },
   {
@@ -90,3 +135,9 @@ let quiz = [
     ],
   },
 ];
+
+shuffleArray(quiz);
+
+quiz.forEach((element) => {
+  shuffleArray(element.a);
+});

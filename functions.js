@@ -99,14 +99,11 @@ function checkStatement() {
 }
 
 function resetBorder() {
-  statements.forEach((element) => {
-    element.parentElement.style.border = "2px #ddd solid;";
-  });
-
   fakeRadio.forEach((element) => {
     element.style.background = "#fff";
     element.style.border = "1px solid #666";
-    console.log("asdasd", element);
+    console.log(element.parentElement);
+    element.parentElement.style.border = "2px #eee solid";
   });
 }
 
@@ -140,4 +137,7 @@ function setStyleWhenSelected(element) {
   element.parentElement.style.border = "2px solid #028A3D";
   element.previousElementSibling.style.background = "#028A3D";
   element.previousElementSibling.style.border = "none";
+}
+function shuffleArray(inputArray) {
+  inputArray.sort(() => Math.random() - 0.5);
 }
