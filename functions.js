@@ -93,6 +93,7 @@ function checkStatement() {
       } else {
         wrongAnswerSound.play();
         answer.parentElement.style.border = "1px red solid";
+        answer.previousElementSibling.style.background = "red";
       }
     }
   });
@@ -114,7 +115,7 @@ function changeBorderStyle(element) {
 
 function validateUserInfos() {
   if (userInfos[0].value == "" || userInfos[1].value == "") {
-    if (userInfos[0].value == "") {
+    if (userInfos[0].value == "" || userInfos[0].value.length < 2) {
       userInfos[0].style.border = "2px solid red";
       userInfos[0].nextElementSibling.textContent =
         "vous avez oublié de remplir votre nom";
@@ -124,10 +125,22 @@ function validateUserInfos() {
       userInfos[1].nextElementSibling.textContent =
         "vous avez oublié de renseigner votre mail";
     }
-  } else if (userInfos[1].value.indexOf("@gmail.com") == "-1") {
+  } else if (
+    userInfos[1].value.indexOf("@gmail.com") == "-1" &&
+    userInfos[1].value.indexOf("@yahoo.com") == "-1"
+    // userInfos[1].value.indexOf("@gmail.com") == "-1" ||
+    // userInfos[1].value.indexOf("@gmail.com") == "-1" ||
+    // userInfos[1].value.indexOf("@gmail.com") == "-1" ||
+    // userInfos[1].value.indexOf("@gmail.com") == "-1" ||
+    // userInfos[1].value.indexOf("@gmail.com") == "-1"
+  ) {
     userInfos[1].style.border = "2px solid red";
     userInfos[1].nextElementSibling.textContent =
       "Veuillez entrer une adresse e-mail valide";
+  } else if (userInfos[0].value.length < 2) {
+    userInfos[0].style.border = "2px solid red";
+    userInfos[0].nextElementSibling.textContent =
+      "Entrez un nom valide s'il vous plait";
   } else init();
 }
 
